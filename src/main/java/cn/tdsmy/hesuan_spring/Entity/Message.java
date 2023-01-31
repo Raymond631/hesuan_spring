@@ -38,4 +38,12 @@ public class Message implements Serializable {
     public void setMsg(Object msg) {
         this.msg = msg;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "code=" + code +
+                ", msg=" + msg +
+                '}';
+    }
 }
