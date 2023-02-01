@@ -11,7 +11,7 @@
  Target Server Version : 50739 (5.7.39-log)
  File Encoding         : 65001
 
- Date: 31/01/2023 18:28:40
+ Date: 01/02/2023 11:33:41
 */
 
 SET NAMES utf8mb4;
@@ -34,20 +34,6 @@ CREATE TABLE `location`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for log
--- ----------------------------
-DROP TABLE IF EXISTS `log`;
-CREATE TABLE `log`  (
-  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `service_id` int(11) NOT NULL COMMENT '队列id',
-  `day` date NOT NULL COMMENT '预约日期',
-  `time_id` int(11) NOT NULL COMMENT '预约时间段id',
-  `status` int(11) NOT NULL COMMENT '0未签到、1已签到、2已失效、3已完成',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Table structure for queue
 -- ----------------------------
 DROP TABLE IF EXISTS `queue`;
@@ -61,6 +47,20 @@ CREATE TABLE `queue`  (
   `person_num` int(11) NOT NULL COMMENT '现场实际排队人数（签到人数）',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for queue_record
+-- ----------------------------
+DROP TABLE IF EXISTS `queue_record`;
+CREATE TABLE `queue_record`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `queue_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '队列id',
+  `day` date NOT NULL COMMENT '预约日期',
+  `time_id` int(11) NOT NULL COMMENT '预约时间段id',
+  `status` int(11) NOT NULL COMMENT '0未签到、1已签到、2已失效、3已完成',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for time

@@ -1,9 +1,6 @@
 package cn.tdsmy.hesuan_spring.Service.Impl;
 
-import cn.tdsmy.hesuan_spring.Entity.Location;
-import cn.tdsmy.hesuan_spring.Entity.Message;
-import cn.tdsmy.hesuan_spring.Entity.Queue;
-import cn.tdsmy.hesuan_spring.Entity.Time;
+import cn.tdsmy.hesuan_spring.Entity.*;
 import cn.tdsmy.hesuan_spring.Mapper.QueueMapper;
 import cn.tdsmy.hesuan_spring.Service.QueueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +52,11 @@ public class QueueServiceImpl implements QueueService {
             queue.setTimeList(queueMapper.getTimeListData(queue.getId()));
         }
         return queueList;
+    }
+
+    @Override
+    public Object insertQueueRecord(QueueRecord queueRecord) {
+        queueMapper.insertQueueRecord(queueRecord.getUsername(), queueRecord.getQueue_id(), queueRecord.getDay(), queueRecord.getTime_id(), queueRecord.getStatus());
+        return new Message(1, "预约成功");
     }
 }

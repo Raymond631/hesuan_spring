@@ -1,6 +1,7 @@
 package cn.tdsmy.hesuan_spring.Controller;
 
 import cn.tdsmy.hesuan_spring.Entity.Queue;
+import cn.tdsmy.hesuan_spring.Entity.QueueRecord;
 import cn.tdsmy.hesuan_spring.Service.QueueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,5 +26,10 @@ public class QueueController {
     @GetMapping("/getQueueData")
     public Object getQueueData() {
         return queueService.getQueueData();
+    }
+
+    @PostMapping("/insertQueueRecord")
+    public Object addToQueue(@RequestBody QueueRecord queueRecord) {
+        return queueService.insertQueueRecord(queueRecord);
     }
 }

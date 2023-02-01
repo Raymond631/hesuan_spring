@@ -1,6 +1,7 @@
 package cn.tdsmy.hesuan_spring.Service;
 
 import cn.tdsmy.hesuan_spring.Entity.Queue;
+import cn.tdsmy.hesuan_spring.Entity.QueueRecord;
 
 /**
  * @Author: Raymond Li
@@ -13,4 +14,6 @@ public interface QueueService {
     String createID();
 
     Object getQueueData();
+
+    Object insertQueueRecord(QueueRecord queueRecord);
 }

@@ -34,4 +34,7 @@ public interface QueueMapper {
 
     @Select("select * from time where queue_id = #{id}")
     List<Time> getTimeListData(String id);
+
+    @Insert("insert into queue_record (username,queue_id,day,time_id,status) values (#{username},#{queue_id},#{day},#{time_id},#{status})")
+    void insertQueueRecord(String username, String queue_id, String day, int time_id, int status);
 }
