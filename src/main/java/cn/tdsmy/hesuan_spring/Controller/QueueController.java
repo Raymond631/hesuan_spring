@@ -3,10 +3,7 @@ package cn.tdsmy.hesuan_spring.Controller;
 import cn.tdsmy.hesuan_spring.Entity.Queue;
 import cn.tdsmy.hesuan_spring.Service.QueueService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: Raymond Li
@@ -24,6 +21,9 @@ public class QueueController {
         queue.setId(queueService.createID());
         return queueService.createQueue(queue);
     }
-    
 
+    @GetMapping("/getQueueData")
+    public Object getQueueData() {
+        return queueService.getQueueData();
+    }
 }

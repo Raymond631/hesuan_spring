@@ -46,4 +46,14 @@ public class QueueServiceImpl implements QueueService {
         String time = formatDate.replaceAll("[\\s-:punct:]", "");
         return time + (int) (Math.random() * 1000);
     }
+
+    @Override
+    public Object getQueueData() {
+        List<Queue> queueList = queueMapper.getQueueData();
+        for (Queue queue : queueList) {
+            queue.setLocation(queueMapper.getLocationData(queue.getId()));
+            queue.setTimeList(queueMapper.getTimeListData(queue.getId()));
+        }
+        return queueList;
+    }
 }

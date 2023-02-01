@@ -11,4 +11,6 @@ public interface QueueService {
     Object createQueue(Queue queue);
 
     String createID();
+
+    Object getQueueData();
 }

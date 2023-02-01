@@ -12,25 +12,25 @@ public class Time implements Serializable {
     @Serial
     private static final long serialVersionUID = -110205399388986294L;
 
-    private String id;
-    private int queue_id;
+    private int id;
+    private String queue_id;
     private String start_time;
     private String end_time;
     private int max_num;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getQueue_id() {
+    public String getQueue_id() {
         return queue_id;
     }
 
-    public void setQueue_id(int queue_id) {
+    public void setQueue_id(String queue_id) {
         this.queue_id = queue_id;
     }
 

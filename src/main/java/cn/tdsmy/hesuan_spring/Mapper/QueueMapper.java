@@ -1,9 +1,14 @@
 package cn.tdsmy.hesuan_spring.Mapper;
 
+import cn.tdsmy.hesuan_spring.Entity.Location;
+import cn.tdsmy.hesuan_spring.Entity.Queue;
+import cn.tdsmy.hesuan_spring.Entity.Time;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @Author: Raymond Li
@@ -20,4 +25,13 @@ public interface QueueMapper {
 
     @Insert("insert into time (queue_id,start_time,end_time,max_num) values (#{queue_id},#{start_time},#{end_time},#{max_num})")
     void insertTime(String queue_id, String start_time, String end_time, int max_num);
+
+    @Select("select * from queue")
+    List<Queue> getQueueData();
+
+    @Select("select * from location where queue_id = #{id}")
+    Location getLocationData(String id);
+
+    @Select("select * from time where queue_id = #{id}")
+    List<Time> getTimeListData(String id);
 }
