@@ -1,10 +1,18 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/hesuan
+    url: jdbc:mysql://127.0.0.1:3306/
     username: Raymond
     password: CSU@82092102
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+  sql:
+    init:
+      schema-locations:
+        classpath:init.sql
+      mode: always
+      platform: mysql
+      encoding: UTF-8
+
 server:
   servlet:
     context-path: "/hesuan"
