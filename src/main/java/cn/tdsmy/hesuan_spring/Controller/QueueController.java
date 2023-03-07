@@ -23,13 +23,23 @@ public class QueueController {
         return queueService.createQueue(queue);
     }
 
+    @GetMapping("/getQueueList")
+    public Object getQueueList(){
+        return queueService.getQueueList();
+    }
+
     @GetMapping("/getQueueData")
-    public Object getQueueData() {
-        return queueService.getQueueData();
+    public Object getQueueData(String id) {
+        return queueService.getQueueData(id);
     }
 
     @PostMapping("/insertQueueRecord")
     public Object addToQueue(@RequestBody QueueRecord queueRecord) {
         return queueService.insertQueueRecord(queueRecord);
+    }
+
+    @GetMapping("/getQueueRecord")
+    public Object getQueueRecord(String username) {
+        return queueService.getQueueRecord(username);
     }
 }

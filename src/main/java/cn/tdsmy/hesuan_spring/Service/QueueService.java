@@ -13,7 +13,11 @@ public interface QueueService {
 
     String createID();
 
-    Object getQueueData();
+    Object getQueueData(String id);
 
     Object insertQueueRecord(QueueRecord queueRecord);
+
+    Object getQueueList();
+
+    Object getQueueRecord(String username);
 }

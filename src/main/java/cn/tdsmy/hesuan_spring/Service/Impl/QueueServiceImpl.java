@@ -45,18 +45,26 @@ public class QueueServiceImpl implements QueueService {
     }
 
     @Override
-    public Object getQueueData() {
-        List<Queue> queueList = queueMapper.getQueueData();
-        for (Queue queue : queueList) {
-            queue.setLocation(queueMapper.getLocationData(queue.getId()));
-            queue.setTimeList(queueMapper.getTimeListData(queue.getId()));
-        }
-        return queueList;
+    public Object getQueueData(String id) {
+        Queue queue= queueMapper.getQueueData(id);
+        queue.setLocation(queueMapper.getLocationData(queue.getId()));
+        queue.setTimeList(queueMapper.getTimeListData(queue.getId()));
+        return queue;
     }
 
     @Override
     public Object insertQueueRecord(QueueRecord queueRecord) {
         queueMapper.insertQueueRecord(queueRecord.getUsername(), queueRecord.getQueue_id(), queueRecord.getDay(), queueRecord.getTime_id(), queueRecord.getStatus());
         return new Message(1, "预约成功");
+    }
+
+    @Override
+    public Object getQueueList() {
+        return queueMapper.getQueueList();
+    }
+
+    @Override
+    public Object getQueueRecord(String username) {
+        return queueMapper.getQueueRecord(username);
     }
 }
