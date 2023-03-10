@@ -22,7 +22,7 @@ public class QueueServiceImpl implements QueueService {
 
     @Override
     public Object createQueue(Queue queue) {
-        queueMapper.insertQueue(queue.getId(), queue.getName(), queue.getStart_day(), queue.getEnd_day(), queue.getUsername(), queue.getPhone(), queue.getPerson_num());
+        queueMapper.insertQueue(queue);
 
         Location location = queue.getLocation();
         queueMapper.insertLocation(queue.getId(), location.getLat(), location.getLng(), location.getProvince(), location.getCity(), location.getDistrict(), location.getAddress(), location.getDistance());
@@ -32,16 +32,6 @@ public class QueueServiceImpl implements QueueService {
             queueMapper.insertTime(queue.getId(), time.getStart_time(), time.getEnd_time(), time.getMax_num());
         }
         return new Message(1, "发布成功");
-    }
-
-    @Override
-    public String createID() {
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String formatDate = sdf.format(date);
-
-        String time = formatDate.replaceAll("[\\s-:punct:]", "");
-        return time + (int) (Math.random() * 1000);
     }
 
     @Override

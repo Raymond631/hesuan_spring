@@ -22,6 +22,6 @@ public class AndroidController {
     @PutMapping("/numberOfPeople")
     public Object updateNumberOfPeople(@RequestBody NumberOfPeople numberOfPeople) {
         System.out.println(numberOfPeople.toString());
-        return androidService.updateNumberOfPeople(numberOfPeople.getId(), numberOfPeople.getNumber());
+        return androidService.updateNumberOfPeople(numberOfPeople);
     }
 }

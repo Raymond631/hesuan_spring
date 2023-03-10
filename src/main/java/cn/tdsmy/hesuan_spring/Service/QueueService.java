@@ -11,8 +11,6 @@ import cn.tdsmy.hesuan_spring.Entity.QueueRecord;
 public interface QueueService {
     Object createQueue(Queue queue);
 
-    String createID();
-
     Object getQueueData(String id);
 
     Object insertQueueRecord(QueueRecord queueRecord);

@@ -1,5 +1,6 @@
 package cn.tdsmy.hesuan_spring.Mapper;
 
+import cn.tdsmy.hesuan_spring.Entity.NumberOfPeople;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
 
@@ -11,6 +12,6 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface AndroidMapper {
 
-    @Update("update queue set person_num = #{number} where id = #{id}")
-    void updateNumberOfPeople(String id, int number);
+    @Update("update queue set person_num = #{number} , num_update_time = #{timeNow} where id = #{id}")
+    void updateNumberOfPeople(NumberOfPeople numberOfPeople);
 }

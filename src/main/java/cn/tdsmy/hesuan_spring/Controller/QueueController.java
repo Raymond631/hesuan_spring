@@ -19,7 +19,6 @@ public class QueueController {
 
     @PostMapping("/createQueue")
     public Object creatQueue(@RequestBody Queue queue) {
-        queue.setId(queueService.createID());
         return queueService.createQueue(queue);
     }
 

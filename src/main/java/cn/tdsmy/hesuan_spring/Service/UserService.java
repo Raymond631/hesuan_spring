@@ -1,6 +1,7 @@
 package cn.tdsmy.hesuan_spring.Service;
 
-import cn.tdsmy.hesuan_spring.Entity.User;
+import cn.tdsmy.hesuan_spring.Entity.Certificate;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -9,13 +10,8 @@ import jakarta.servlet.http.HttpSession;
  * @Version 1.0
  */
 public interface UserService {
-    Object register(User user, HttpSession session);
 
-    Object login(String username, String password, HttpSession session);
+    String getOpenID(Certificate certificate) throws JsonProcessingException;
 
-    Object logout(String username, HttpSession session);
-
-    Object changeUserInfo(User user);
-
-    Object deleteUser(String username, HttpSession session);
+    String getTimeNow();
 }

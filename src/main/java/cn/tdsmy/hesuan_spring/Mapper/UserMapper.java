@@ -1,9 +1,6 @@
 package cn.tdsmy.hesuan_spring.Mapper;
 
-import cn.tdsmy.hesuan_spring.Entity.User;
 import org.apache.ibatis.annotations.*;
-
-import java.util.List;
 
 /**
  * @Author: Raymond Li
@@ -12,18 +9,6 @@ import java.util.List;
  */
 @Mapper
 public interface UserMapper {
-    @Select("select * from user where username = #{username}")
-    List<User> selectUserByUsername(String username);
-
-    @Insert("insert into user (username,password,phone) values (#{username},#{password},#{phone})")
-    void insertUser(String username, String password, String phone);
-
-    @Select("select * from user where username = #{username} and password = #{password}")
-    List<User> selectUserByUsernameAndPassword(String username, String password);
-
-    @Update("update user set password = #{password},phone = #{phone} where username = #{username}")
-    void changeUserInfo(String username, String password, String phone);
-
-    @Delete("delete from user where username = #{username}")
-    void deleteUser(String username);
+    @Insert("INSERT INTO user (user_id,last_login_time) VALUES (#{openID},#{time}) ON DUPLICATE KEY UPDATE last_login_time=#{time};")
+    void insertOrUpdateUser(String openID, String time);
 }
