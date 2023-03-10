@@ -1,6 +1,7 @@
 package cn.tdsmy.hesuan_spring.Controller;
 
 import cn.tdsmy.hesuan_spring.Entity.Certificate;
+import cn.tdsmy.hesuan_spring.Entity.CertificateResolved;
 import cn.tdsmy.hesuan_spring.Service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class UserController {
     @PostMapping("/login")
     public Object login(@RequestBody Certificate certificate) throws JsonProcessingException {
         String openID = userService.getOpenID(certificate);
-        return openID;
+        CertificateResolved certificateResolved =new CertificateResolved();
+        certificateResolved.setOpenid(openID);
+        return certificateResolved;
     }
 }
