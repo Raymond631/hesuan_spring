@@ -16,7 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NumberOfPeople{
-    private String id;
+    private int id;
     private int lastNum;
     private int number;
     private String timeNow;

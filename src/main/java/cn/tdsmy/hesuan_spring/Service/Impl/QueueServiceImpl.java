@@ -3,6 +3,7 @@ package cn.tdsmy.hesuan_spring.Service.Impl;
 import cn.tdsmy.hesuan_spring.Entity.*;
 import cn.tdsmy.hesuan_spring.Mapper.QueueMapper;
 import cn.tdsmy.hesuan_spring.Service.QueueService;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

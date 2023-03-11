@@ -1,10 +1,7 @@
 package cn.tdsmy.hesuan_spring.Mapper;
 
 import cn.tdsmy.hesuan_spring.Entity.*;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -36,11 +33,31 @@ public interface QueueMapper {
     List<Time> getTimeListData(int id);
 
     @Insert("insert into queue_record (username,queue_id,day,time_id,status) values (#{username},#{queue_id},#{day},#{time_id},#{status})")
-    void insertQueueRecord(String username, String queue_id, String day, int time_id, int status);
+    void insertQueueRecord(String username, int queue_id, String day, int time_id, int status);
 
     @Select("select id,name from queue")
     List<QueueList> getQueueList();
 
+    //TODO 联表查询
     @Select("select * from queue_record where username = #{username}")
+    @Results(value = {
+            @Result(column = "id",property = "id"),
+            @Result(column = "queue_id",property = "queue_id"),
+            @Result(column = "queue_id",property = "queue_name",one=@One(select="cn.tdsmy.hesuan_spring.Mapper.QueueMapper.getQueueNameById")),
+            @Result(column = "day",property = "day"),
+            @Result(column = "time_id",property = "time_id"),
+            @Result(column = "time_id",property = "start_time",one=@One(select="cn.tdsmy.hesuan_spring.Mapper.QueueMapper.getStartTimeById")),
+            @Result(column = "time_id",property = "end_time",one=@One(select="cn.tdsmy.hesuan_spring.Mapper.QueueMapper.getEndTimeById")),
+            @Result(column = "status",property = "status"),
+    })
     List<QueueRecord> getQueueRecord(String username);
+
+    @Select("select name from queue where id = #{queue_id}")
+    String getQueueNameById(int queue_id);
+
+    @Select("select start_time from time where id = #{time_id}")
+    String getStartTimeById(int time_id);
+
+    @Select("select end_time from time where id = #{time_id}")
+    String getEndTimeById(int time_id);
 }

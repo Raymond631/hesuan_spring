@@ -16,9 +16,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QueueRecord{
+    private int id;
+    private int queue_id;
     private String username;
-    private String queue_id;
     private String day;
     private int time_id;
     private int status;
+
+    private String queue_name;
+    private String start_time;
+    private String end_time;
 }

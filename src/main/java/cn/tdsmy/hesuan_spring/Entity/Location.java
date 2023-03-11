@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location{
-    private String queue_id;
+    private int queue_id;
     private BigDecimal lat;
     private BigDecimal lng;
     private String province;
