@@ -60,4 +60,7 @@ public interface QueueMapper {
 
     @Select("select end_time from time where id = #{time_id}")
     String getEndTimeById(int time_id);
+
+    @Update("update queue_record set status = 1 where id = #{queueRecordID}")
+    void updateStatus(int queueRecordID);
 }

@@ -18,4 +18,6 @@ public interface QueueService {
     Object getQueueList();
 
     Object getQueueRecord(String username);
+
+    Object checkIn(int queueRecordID);
 }

@@ -58,4 +58,10 @@ public class QueueServiceImpl implements QueueService {
     public Object getQueueRecord(String username) {
         return queueMapper.getQueueRecord(username);
     }
+
+    @Override
+    public Object checkIn(int queueRecordID) {
+        queueMapper.updateStatus(queueRecordID);
+        return new Message(1,"签到成功");
+    }
 }

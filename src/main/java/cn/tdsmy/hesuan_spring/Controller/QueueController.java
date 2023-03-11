@@ -41,4 +41,9 @@ public class QueueController {
     public Object getQueueRecord(String username) {
         return queueService.getQueueRecord(username);
     }
+
+    @PutMapping("/checkIn")
+    public Object checkIn(int queueRecordID){
+        return queueService.checkIn(queueRecordID);
+    }
 }
