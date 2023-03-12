@@ -23,6 +23,7 @@ public class Queue{
     private String end_day;
     private String username;
     private String phone;
+    private int reserve_num;
     private int person_num;
     private Location location;
     private List<Time> timeList;

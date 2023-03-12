@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 10/03/2023 23:11:42
+ Date: 12/03/2023 18:16:17
 */
 
 SET NAMES utf8mb4;
@@ -49,6 +49,7 @@ CREATE TABLE `queue`  (
   `end_day` date NOT NULL COMMENT '截止日期',
   `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '发布者名称',
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '发布者联系方式',
+  `reserve_num` int NULL DEFAULT NULL COMMENT '已预约人数',
   `person_num` int NOT NULL COMMENT '现场实际排队人数（签到人数）',
   `num_update_time` datetime NULL DEFAULT NULL COMMENT '现场人数更新时间',
   PRIMARY KEY (`id`) USING BTREE
@@ -57,7 +58,7 @@ CREATE TABLE `queue`  (
 -- ----------------------------
 -- Records of queue
 -- ----------------------------
-INSERT INTO `queue` VALUES (2, '123456', '2023-01-31', '2023-02-01', 'test-01', '12345678900', 0, '2023-03-10 21:07:13');
+INSERT INTO `queue` VALUES (2, '123456', '2023-01-31', '2023-02-01', 'test-01', '12345678900', 10, 2, '2023-03-10 21:07:13');
 
 -- ----------------------------
 -- Table structure for queue_record
@@ -76,6 +77,8 @@ CREATE TABLE `queue_record`  (
 -- ----------------------------
 -- Records of queue_record
 -- ----------------------------
+INSERT INTO `queue_record` VALUES (1, '张三', 2, '2023-03-11', 11, 1);
+INSERT INTO `queue_record` VALUES (2, '张三', 2, '2023-03-11', 12, 1);
 
 -- ----------------------------
 -- Table structure for time
@@ -109,5 +112,6 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('oKQdU5G8eNHaoc12byIwth8z83hM', '2023-03-10 23:31:52');
 
 SET FOREIGN_KEY_CHECKS = 1;

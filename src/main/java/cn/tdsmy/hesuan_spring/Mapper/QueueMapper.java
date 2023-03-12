@@ -24,7 +24,21 @@ public interface QueueMapper {
     void insertTime(int queue_id, String start_time, String end_time, int max_num);
 
     @Select("select * from queue where id = #{id}")
+    @Results(value = {
+            @Result(column = "id",property = "id"),
+            @Result(column = "name",property = "name"),
+            @Result(column = "start_day",property = "start_day"),
+            @Result(column = "end_day",property = "end_day"),
+            @Result(column = "username",property = "username"),
+            @Result(column = "phone",property = "phone"),
+            @Result(column = "reserve_num",property = "reserve_num"),
+            @Result(column = "person_num",property = "person_num"),
+    })
     Queue getQueueData(String id);
+
+
+    @Select(" select count(*) from queue_record where queue_id = #{queue_id}")
+    public int count(int queue_id);
 
     @Select("select * from location where queue_id = #{id}")
     Location getLocationData(int id);
